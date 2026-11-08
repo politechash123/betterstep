@@ -1,0 +1,236 @@
+/* ==========================================================================
+   Animations
+   Interactive states mirror the Figma "Animations" page / prototype:
+   - FAQ item            Default → Variant2   click   smart-animate 300ms ease-in-out
+   - NFT card stack      Default → Variant2   hover   smart-animate 500ms ease-in-out
+   - Shoe NFT card       rarity cycle         after 0.8s, smart-animate 1200ms ease-out
+   - Play Store dots     Default → Variant2   hover   smart-animate 100ms ease-out
+   - Token cards         Default → Variant2   hover   smart-animate 300ms ease-out
+   Scroll reveals, counters and ambient motion are added on top.
+   Only active when JS is running (html.js) so content is never hidden without it.
+   ========================================================================== */
+
+/* ---------- Scroll reveal ---------- */
+.js [data-reveal] {
+  opacity: 0;
+  translate: 0 32px;
+  transition:
+    opacity 800ms var(--ease-out) var(--d, 0ms),
+    translate 800ms var(--ease-out) var(--d, 0ms);
+}
+
+.js [data-reveal].is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* ---------- Ambient float for glows & blobs ---------- */
+@keyframes float-slow {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(30px, -24px, 0) scale(1.06); }
+}
+
+@keyframes float-alt {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-36px, 20px, 0) scale(0.95); }
+}
+
+@keyframes float-blob {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(8px, -14px) rotate(8deg); }
+}
+
+.float-slow { animation: float-slow 16s ease-in-out infinite; }
+.float-alt { animation: float-alt 20s ease-in-out infinite; }
+.float-blob { animation: float-blob 7s ease-in-out infinite; }
+.float-blob--alt { animation-duration: 9s; animation-direction: reverse; }
+
+/* Card hover-float (the stacked NFT card idles gently) */
+@keyframes card-bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+
+.nft-stack.is-visible,
+.shoe-wrap.is-visible {
+  animation: card-bob 6s ease-in-out 900ms infinite;
+}
+
+.nft-stack:hover,
+.nft-stack.is-active {
+  animation-play-state: paused;
+}
+
+/* ---------- Steps: rings pulse, dashed links draw in ---------- */
+@keyframes ring-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.step.is-visible .step__rings span:nth-child(1) { animation: ring-pulse 4s ease-in-out infinite; }
+.step.is-visible .step__rings span:nth-child(2) { animation: ring-pulse 4s ease-in-out 0.3s infinite; }
+.step.is-visible .step__rings span:nth-child(3) { animation: ring-pulse 4s ease-in-out 0.6s infinite; }
+
+.step__rings img {
+  transition: transform var(--t-slow) var(--ease-in-out);
+}
+
+.step:hover .step__rings img {
+  transform: scale(1.15) rotate(-8deg);
+}
+
+.js .step__link span {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 900ms var(--ease-out);
+}
+
+.js .steps__list.is-visible .step__link:nth-of-type(2) span { transform: scaleX(1); transition-delay: 300ms; }
+.js .steps__list.is-visible .step__link:nth-of-type(4) span { transform: scaleX(1); transition-delay: 600ms; }
+
+/* ---------- Rarity orbs: roll in one after another ---------- */
+.js .rarity__orbs i {
+  opacity: 0;
+  transform: translateX(-60px) scale(0.6);
+  transition:
+    opacity 700ms var(--ease-out),
+    transform 900ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.js .rarity__orbs.is-visible i { opacity: 1; transform: none; }
+.js .rarity__orbs.is-visible i:nth-child(2) { transition-delay: 150ms; }
+.js .rarity__orbs.is-visible i:nth-child(3) { transition-delay: 300ms; }
+.js .rarity__orbs.is-visible i:nth-child(4) { transition-delay: 450ms; }
+
+.rarity__orbs i:hover {
+  transform: translateY(-10px) scale(1.05) !important;
+  transition-delay: 0ms !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- How it works: flow draws itself ---------- */
+.js [data-flow] .flow__line {
+  transform: scaleX(0);
+  transition: transform 700ms var(--ease-out);
+}
+
+.js [data-flow] [data-flow-step],
+.js [data-flow] [data-flow-note] {
+  opacity: 0;
+  translate: 0 16px;
+  transition:
+    opacity 600ms var(--ease-out),
+    translate 600ms var(--ease-out);
+}
+
+.js [data-flow] .flow__fork path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 800ms var(--ease-out);
+}
+
+.js [data-flow].is-visible .flow__line { transform: none; }
+.js [data-flow].is-visible [data-flow-step],
+.js [data-flow].is-visible [data-flow-note] { opacity: 1; translate: 0 0; }
+.js [data-flow].is-visible .flow__fork path { stroke-dashoffset: 0; }
+
+/* Sequential delays are set inline by animations.js (--seq). */
+.js [data-flow] > * {
+  transition-delay: var(--seq, 0ms) !important;
+}
+
+.js [data-flow] .flow__fork path {
+  transition-delay: var(--seq, 0ms);
+}
+
+.flow__pill,
+.flow__circle,
+.flow__nft {
+  transition: transform var(--t-base) var(--ease-out), box-shadow var(--t-base) var(--ease-out);
+}
+
+.flow__node:hover .flow__pill,
+.flow__node:hover .flow__circle {
+  transform: scale(1.06);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.12);
+}
+
+.flow__node:hover .flow__nft {
+  transform: rotate(-6deg) scale(1.05);
+}
+
+@keyframes coin-spin {
+  0%, 100% { transform: translateY(0) rotateY(0deg); }
+  50% { transform: translateY(-8px) rotateY(18deg); }
+}
+
+[data-flow].is-visible .flow__tokens img {
+  animation: coin-spin 5s ease-in-out 1.6s infinite;
+}
+
+[data-flow].is-visible .flow__tokens img + img {
+  animation-delay: 2.2s;
+}
+
+/* ---------- Tokenomics: list items stagger in ---------- */
+.js [data-stagger] li {
+  opacity: 0;
+  translate: -18px 0;
+  transition:
+    opacity 600ms var(--ease-out) var(--seq, 0ms),
+    translate 600ms var(--ease-out) var(--seq, 0ms),
+    color var(--t-base) var(--ease-out);
+}
+
+.js [data-stagger].is-visible li {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@keyframes token-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+
+.token-card.is-visible .token-card__img {
+  animation: token-float 4s ease-in-out infinite;
+}
+
+.token-card--bff.is-visible .token-card__img { animation-delay: 0.6s; }
+.token-card--nft.is-visible .token-card__img { animation-delay: 1.2s; }
+
+/* ---------- Reduced motion: keep states, drop movement ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .js [data-reveal],
+  .js [data-stagger] li,
+  .js [data-flow] [data-flow-step],
+  .js [data-flow] [data-flow-note] {
+    opacity: 1;
+    translate: none;
+  }
+
+  .js .step__link span,
+  .js [data-flow] .flow__line {
+    transform: none;
+  }
+
+  .js .rarity__orbs i {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js [data-flow] .flow__fork path {
+    stroke-dashoffset: 0;
+  }
+}

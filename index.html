@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>document.documentElement.classList.add('js')</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BetterStep — Earn to move</title>
+  <meta name="description" content="BetterStep turns your steps into earnings. Walk, run or exercise and earn $BTT and $BFF tokens with Shoe NFTs.">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <div class="site-header__bar">
+      <a class="site-header__logo" href="index.html" aria-label="BetterStep home">
+        <img src="assets/images/logo.png" alt="" width="36" height="50">
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="tokenomics.html">Tokenomics</a></li>
+          <li><a href="index.html#team">Career</a></li>
+          <li class="site-nav__cta-item"><a class="site-nav__cta" href="#download">Launch App</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <a class="btn btn--light" href="#download">Launch App</a>
+        <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu" data-nav-toggle>
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="page page--home">
+    <!-- Background glows (Figma blurred ellipses) -->
+    <div class="glow glow--olive float-slow" style="left: calc(50% - 360px); top: 380px; width: 720px; height: 720px;" aria-hidden="true"></div>
+    <div class="glow glow--violet float-alt" style="left: calc(50% + 270px); top: 860px; width: 420px; height: 420px;" aria-hidden="true"></div>
+    <div class="glow glow--maroon float-slow" style="left: calc(50% - 460px); top: 1560px; width: 920px; height: 380px;" aria-hidden="true"></div>
+
+    <!-- ================= Hero ================= -->
+    <section class="hero container" aria-labelledby="hero-title">
+      <h1 class="hero__title" id="hero-title" data-reveal>Earn to move</h1>
+      <p class="hero__text" data-reveal style="--d: 120ms">
+        Ready to energize your life and turn it into earnings? With Move to Earn, your steps hold real value.
+        Simply walk, run, or exercise to earn. Each step matters.
+      </p>
+      <div class="hero__stores" data-reveal style="--d: 240ms">
+        <a class="store store--play" href="https://play.google.com/store" target="_blank" rel="noopener">
+          <span class="dot-trail" data-dot-trail aria-hidden="true"></span>
+          <img src="assets/icons/playstore.svg" alt="" width="40" height="40">
+          <span>Play Store</span>
+        </a>
+        <a class="store store--apple" href="https://www.apple.com/app-store/" target="_blank" rel="noopener">
+          <img src="assets/icons/apple.svg" alt="" width="31" height="38">
+          <span>App Store</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= Stats ================= -->
+    <section class="section stats container" id="features" aria-label="BetterStep in numbers">
+      <article class="stat" data-reveal>
+        <div class="stat__icon glass-circle"><img src="assets/icons/fire.svg" alt="" width="50" height="50"></div>
+        <p class="stat__value" style="--g1: rgb(183,35,70); --g2: rgb(197,136,45)">
+          <span data-count="112256.60" data-decimals="2" data-prefix="+">+112,256.60</span>
+        </p>
+        <p class="stat__unit">Kcal</p>
+        <h2 class="stat__label">Calories burned</h2>
+      </article>
+
+      <article class="stat" data-reveal style="--d: 120ms">
+        <div class="stat__icon glass-circle"><img src="assets/icons/road.svg" alt="" width="50" height="50"></div>
+        <p class="stat__value" style="--g1: rgb(68,49,186); --g2: rgb(151,157,216)">
+          <span data-count="1600000.35" data-decimals="2" data-prefix="+">+1,600,000.35</span>
+        </p>
+        <p class="stat__unit">Meter(M)</p>
+        <h2 class="stat__label">Distance covered</h2>
+      </article>
+
+      <article class="stat" data-reveal style="--d: 60ms">
+        <div class="stat__icon glass-circle"><img src="assets/icons/scale.svg" alt="" width="50" height="40"></div>
+        <p class="stat__value" style="--g1: rgb(48,174,53); --g2: rgb(35,109,73)">
+          <span data-count="16256.20" data-decimals="2" data-prefix="+">+16,256.20</span>
+        </p>
+        <p class="stat__unit">Kilogram(KG)</p>
+        <h2 class="stat__label">Given kilogram</h2>
+      </article>
+
+      <article class="stat" data-reveal style="--d: 180ms">
+        <div class="stat__icon glass-circle"><img src="assets/icons/users.svg" alt="" width="50" height="40"></div>
+        <p class="stat__value" style="--g1: rgb(237,182,40); --g2: rgb(112,86,18)">
+          <span data-count="12600.10" data-decimals="2" data-prefix="+">+12,600.10</span>
+        </p>
+        <p class="stat__unit">Users</p>
+        <h2 class="stat__label">Total users</h2>
+      </article>
+    </section>
+
+    <!-- ================= Earn while walking ================= -->
+    <section class="section steps container" aria-labelledby="steps-title">
+      <h2 class="section-title" id="steps-title" data-reveal>Earn while walking</h2>
+
+      <ol class="steps__list" data-steps>
+        <li class="step" data-reveal style="--d: 0ms">
+          <div class="step__rings">
+            <span></span><span></span><span></span>
+            <img src="assets/icons/step.png" alt="" width="50" height="50">
+          </div>
+          <h3 class="step__label">Take a step</h3>
+        </li>
+        <li class="step__link" aria-hidden="true"><span></span></li>
+        <li class="step" data-reveal style="--d: 200ms">
+          <div class="step__rings">
+            <span></span><span></span><span></span>
+            <img src="assets/icons/exchange.svg" alt="" width="50" height="50">
+          </div>
+          <h3 class="step__label">Earn</h3>
+        </li>
+        <li class="step__link" aria-hidden="true"><span></span></li>
+        <li class="step" data-reveal style="--d: 400ms">
+          <div class="step__rings">
+            <span></span><span></span><span></span>
+            <img src="assets/icons/compass.svg" alt="" width="50" height="50">
+          </div>
+          <h3 class="step__label">Complete the tasks</h3>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ================= Download BetterStep ================= -->
+    <section class="section feature container" aria-labelledby="dl-title">
+      <div class="glow glow--blue float-alt" style="right: -120px; top: -60px; width: 460px; height: 640px;" aria-hidden="true"></div>
+
+      <div class="feature__text" data-reveal>
+        <h2 class="feature__title" id="dl-title">Download BetterStep</h2>
+        <p class="feature__body">
+          Start earning money by walking! Download our app now and convert your steps into earnings with our
+          blockchain and cryptocurrency-based experience.
+        </p>
+      </div>
+
+      <div class="nft-stack" tabindex="0" role="group" aria-label="Better #216 NFT card. Hover or tap to reveal its rarity" data-nft-stack data-reveal style="--d: 150ms">
+        <div class="nft-back" aria-hidden="true">
+          <div class="nft-back__orbs"><i></i><i></i><i></i><i></i></div>
+          <div class="nft-back__badge glass-circle"><img src="assets/images/logo.png" alt=""></div>
+        </div>
+
+        <article class="nft-front">
+          <div class="nft-front__top"></div>
+          <p class="nft-front__title" aria-hidden="true">Better #216</p>
+          <img class="nft-front__avatar" src="assets/images/nft-avatar.png" alt="Better #216 avatar" width="165" height="165">
+          <div class="nft-front__mark glass-circle" aria-hidden="true"><img src="assets/images/logo.png" alt=""></div>
+
+          <div class="nft-front__panel">
+            <div class="nft-front__row">
+              <h3 class="nft-front__name">Better #216</h3>
+              <span class="pill-sm"><img src="assets/icons/heart.svg" alt="">116<span class="visually-hidden"> likes</span></span>
+            </div>
+            <dl class="nft-stats">
+              <div><dt>Price</dt><dd>0.6 ETH</dd></div>
+              <div><dt>Ends in</dt><dd data-countdown="9872">02:44:32</dd></div>
+              <div><dt>Highest</dt><dd>0.86 ETH</dd></div>
+            </dl>
+            <div class="nft-actions">
+              <button class="btn btn--bid" type="button">Bid</button>
+              <button class="btn btn--buy" type="button">Buy</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= Walk, earn, and thrive ================= -->
+    <section class="section feature feature--reverse container" aria-labelledby="walk-title">
+      <div class="glow glow--blue float-slow" style="left: -160px; top: 40px; width: 420px; height: 620px;" aria-hidden="true"></div>
+
+      <div class="shoe-wrap" data-reveal>
+        <img class="shoe-wrap__blob shoe-wrap__blob--blue float-blob" src="assets/images/blob-blue.svg" alt="" aria-hidden="true">
+        <img class="shoe-wrap__blob shoe-wrap__blob--green float-blob float-blob--alt" src="assets/images/blob-green.svg" alt="" aria-hidden="true">
+
+        <article class="shoe-card" data-rarity-cycle aria-label="Shoe NFT card">
+          <div class="shoe-card__media">
+            <img src="assets/images/nft-shoe.jpg" alt="Shoe NFT artwork: a green rabbit character in a red fez" width="357" height="298">
+            <div class="shoe-card__top">
+              <a class="pill-sm" href="#"><img src="assets/icons/chevron-left.svg" alt="">Back</a>
+              <span class="pill-sm"><img src="assets/icons/heart.svg" alt="">114<span class="visually-hidden"> likes</span></span>
+            </div>
+            <div class="shoe-card__chips">
+              <span class="chip shoe-card__rarity"><i class="shoe-card__ring"></i><span class="swap" data-rarity-name>Common</span></span>
+              <span class="chip shoe-card__price"><span class="swap" data-rarity-price>0.08 ETH</span></span>
+            </div>
+          </div>
+
+          <div class="shoe-card__body">
+            <div class="shoe-card__owner">
+              <div class="shoe-card__who">
+                <span class="shoe-card__avatar"><img src="assets/icons/person.svg" alt=""></span>
+                <span><strong>@betterstep</strong>1800 Follower</span>
+              </div>
+              <button class="shoe-card__follow" type="button" aria-pressed="false" data-follow>Follow</button>
+            </div>
+            <p class="shoe-card__desc">
+              Turn your steps into earnings and create your art-filled collection with our Shoe NFTs.
+              <a href="#rarity">show more </a>
+            </p>
+            <div class="nft-actions">
+              <button class="btn btn--bid" type="button">Bid</button>
+              <button class="btn btn--buy" type="button">Buy</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="feature__text" data-reveal style="--d: 150ms">
+        <h2 class="feature__title" id="walk-title">Walk, earn, and thrive</h2>
+        <p class="feature__body">
+          The earned rewards are distributed equally in $BTT and $BFF tokens. Our goal is to provide users with a fun,
+          rewarding, and innovative experience. Discover our project now and turn your steps into earnings.
+        </p>
+        <a class="feature__link" href="how-it-works.html">Launch App</a>
+      </div>
+    </section>
+
+    <!-- ================= Rarity Level ================= -->
+    <section class="section rarity container--wide container" id="rarity" aria-labelledby="rarity-title">
+      <div class="glow glow--aurora float-slow" style="left: 0; right: 0; bottom: -120px; height: 470px;" aria-hidden="true"></div>
+
+      <h2 class="section-title" id="rarity-title" data-reveal>Rarity Level</h2>
+      <p class="section-sub" data-reveal style="--d: 100ms">More information about the rarity levels of NFTs</p>
+
+      <div class="rarity__orbs" data-orbs aria-hidden="true">
+        <i style="--c: 240,85,85"></i>
+        <i style="--c: 255,191,28"></i>
+        <i style="--c: 55,144,250"></i>
+        <i style="--c: 22,237,82"></i>
+      </div>
+
+      <div class="rarity__table-wrap" data-reveal>
+        <table class="rarity-table">
+          <caption class="visually-hidden">Shoe NFT rarity levels and supply</caption>
+          <thead>
+            <tr><th scope="col">Rarity</th><th scope="col">Color</th><th scope="col">Name</th><th scope="col">Supply</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Red</td><td><i class="dot" style="--c: 240,85,85"></i><span class="visually-hidden">Red</span></td><td>Common</td><td>1800</td></tr>
+            <tr><td>Yellow</td><td><i class="dot" style="--c: 255,191,28"></i><span class="visually-hidden">Yellow</span></td><td>Uncommon</td><td>1000</td></tr>
+            <tr><td>Blue</td><td><i class="dot" style="--c: 55,144,250"></i><span class="visually-hidden">Blue</span></td><td>Rare</td><td>600</td></tr>
+            <tr><td>Green</td><td><i class="dot" style="--c: 22,237,82"></i><span class="visually-hidden">Green</span></td><td>Legendary</td><td>60</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ================= Partners ================= -->
+    <section class="section partners container" aria-label="Partner networks">
+      <div class="glow glow--maroon" style="left: 20%; top: 200px; width: 520px; height: 210px;" aria-hidden="true"></div>
+      <ul class="partners__row">
+        <li class="partner" data-reveal style="--d: 0ms"><img src="assets/partners/p01.svg" alt="BNB Chain" width="72" height="72"></li>
+        <li class="partner" data-reveal style="--d: 60ms"><img src="assets/partners/p02.svg" alt="Solana" width="72" height="56"></li>
+        <li class="partner" data-reveal style="--d: 120ms"><img src="assets/partners/p03.svg" alt="Partner network" width="72" height="62"></li>
+        <li class="partner" data-reveal style="--d: 180ms"><img src="assets/partners/p04.svg" alt="Avalanche" width="72" height="72"></li>
+        <li class="partner" data-reveal style="--d: 240ms"><img src="assets/partners/p05.svg" alt="Cosmos" width="72" height="81"></li>
+        <li class="partner" data-reveal style="--d: 300ms"><img src="assets/partners/p06.svg" alt="Partner network" width="72" height="81"></li>
+      </ul>
+      <ul class="partners__row partners__row--offset">
+        <li class="partner" data-reveal style="--d: 90ms"><img src="assets/partners/p07.svg" alt="Partner network" width="72" height="72"></li>
+        <li class="partner" data-reveal style="--d: 150ms"><img src="assets/partners/p08.svg" alt="Polkadot" width="72" height="69"></li>
+        <li class="partner" data-reveal style="--d: 210ms"><img src="assets/partners/p09.svg" alt="NEAR" width="68" height="68"></li>
+        <li class="partner" data-reveal style="--d: 270ms"><img src="assets/partners/p10.svg" alt="Chainlink" width="68" height="79"></li>
+        <li class="partner" data-reveal style="--d: 330ms"><img src="assets/partners/p11.svg" alt="Harmony" width="66" height="66"></li>
+      </ul>
+    </section>
+
+    <!-- ================= Our team ================= -->
+    <section class="section team container" id="team" aria-labelledby="team-title">
+      <h2 class="section-title" id="team-title" data-reveal>Our team</h2>
+      <ul class="team__grid">
+        <li class="member" data-reveal style="--d: 0ms">
+          <div class="member__photo glass" aria-hidden="true"><span>IW</span></div>
+          <h3 class="member__name">Isabella Wilson</h3>
+          <p class="member__role">Owner</p>
+        </li>
+        <li class="member" data-reveal style="--d: 120ms">
+          <div class="member__photo glass" aria-hidden="true"><span>PP</span></div>
+          <h3 class="member__name">Peter Parker</h3>
+          <p class="member__role">UI &amp; UX</p>
+        </li>
+        <li class="member" data-reveal style="--d: 240ms">
+          <div class="member__photo glass" aria-hidden="true"><span>AA</span></div>
+          <h3 class="member__name">Avery Anderson</h3>
+          <p class="member__role">Developer</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="section faq container" aria-labelledby="faq-title">
+      <div class="glow glow--maroon" style="left: 10%; top: 120px; width: 850px; height: 343px;" aria-hidden="true"></div>
+      <h2 class="section-title" id="faq-title" data-reveal>FAQ</h2>
+
+      <div class="faq__list" data-faq>
+        <div class="faq__item" data-reveal>
+          <h3>
+            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">
+              How can I earn money by walking?
+              <img class="faq__caret" src="assets/icons/caret-down.svg" alt="" width="50" height="50">
+            </button>
+          </h3>
+          <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1" hidden>
+            <p>Get a Shoe NFT in the BetterStep app and simply walk, run or exercise. Every verified step is converted into $BTT and $BFF rewards that land straight in your in-app wallet.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" data-reveal style="--d: 60ms">
+          <h3>
+            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
+              How can I sell my shoes?
+              <img class="faq__caret" src="assets/icons/caret-down.svg" alt="" width="50" height="50">
+            </button>
+          </h3>
+          <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2" hidden>
+            <p>List your Shoe NFT on the BetterStep marketplace with a fixed price or open it to bids. When a buyer accepts, the NFT is transferred and the payment goes directly to your wallet.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" data-reveal style="--d: 120ms">
+          <h3>
+            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
+              What can I do if my shoes get worn out?
+              <img class="faq__caret" src="assets/icons/caret-down.svg" alt="" width="50" height="50">
+            </button>
+          </h3>
+          <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3" hidden>
+            <p>You can refurbish your worn-out shoes. With the refurbishment option, you can repair your shoes or exchange them for a newer model.</p>
+          </div>
+        </div>
+
+        <div class="faq__item" data-reveal style="--d: 180ms">
+          <h3>
+            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
+              How are the rarity levels of shoes determined?
+              <img class="faq__caret" src="assets/icons/caret-down.svg" alt="" width="50" height="50">
+            </button>
+          </h3>
+          <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4" hidden>
+            <p>Every Shoe NFT is minted with one of four rarity levels: Common, Uncommon, Rare or Legendary. Rarer shoes have a smaller supply and boost your earnings. See the <a href="#rarity">Rarity Level</a> table for details.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Download CTA (Left Overs "DownloadTwo") ================= -->
+    <section class="section container" id="download" aria-labelledby="cta-title">
+      <div class="cta" data-reveal>
+        <div>
+          <h2 class="cta__title" id="cta-title">Download BetterStep</h2>
+          <p class="cta__text">
+            Start earning money by walking! Download our app now and convert your steps into earnings with our
+            blockchain and cryptocurrency-based experience.
+          </p>
+        </div>
+        <div class="cta__stores">
+          <a class="store store--apple" href="https://www.apple.com/app-store/" target="_blank" rel="noopener">
+            <img src="assets/icons/apple.svg" alt="" width="31" height="38"><span>App Store</span>
+          </a>
+          <a class="store store--play" href="https://play.google.com/store" target="_blank" rel="noopener">
+            <img src="assets/icons/playstore.svg" alt="" width="40" height="40"><span>Play Store</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <a class="site-footer__brand" href="index.html"><img src="assets/images/logo.png" alt="">BetterStep</a>
+      <nav aria-label="Footer">
+        <ul class="site-footer__links">
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="how-it-works.html">How it works</a></li>
+          <li><a href="tokenomics.html">Tokenomics</a></li>
+          <li><a href="index.html#team">Career</a></li>
+        </ul>
+      </nav>
+      <p class="site-footer__copy"><span>&copy; <span data-year>2026</span> BetterFan. All rights reserved.</span><span class="site-footer__credit">Made by <a href="https://www.instagram.com/mnstrash_/" target="_blank" rel="noopener">@mnstrash_</a></span></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+  <script src="js/animations.js" defer></script>
+</body>
+</html>

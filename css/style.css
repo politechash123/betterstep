@@ -1,0 +1,1220 @@
+/* ==========================================================================
+   BetterStep — shared styles
+   Values come from the Figma file (1920px artboard) and scale down fluidly.
+   ========================================================================== */
+
+:root {
+  /* Surfaces */
+  --bg: #000;
+  --glass: rgba(255, 255, 255, 0.08);
+  --glass-strong: rgba(255, 255, 255, 0.12);
+  --glass-line: rgba(255, 255, 255, 0.12);
+  --header-bg: rgba(26, 26, 26, 0.6);
+  --panel-bg: rgba(0, 0, 0, 0.75);
+
+  /* Text */
+  --text: #fff;
+  --text-80: rgba(255, 255, 255, 0.8);
+  --text-60: rgba(255, 255, 255, 0.6);
+  --text-50: rgba(255, 255, 255, 0.5);
+  --text-40: rgba(255, 255, 255, 0.4);
+
+  /* Accents */
+  --purple: #4431ba;
+  --purple-card: #5036b9;
+  --blue: #3580ef;
+  --link: #5283ff;
+  --link-soft: #5174f4;
+
+  /* Rarity */
+  --red: #f05555;
+  --yellow: #ffbf1c;
+  --sky: #3790fa;
+  --green: #16ed52;
+
+  /* Tokens */
+  --btb: #5565f0;
+  --bff: #5494b0;
+  --nft: #a93333;
+
+  /* Type scale (Figma px at 1920 → fluid) */
+  --fs-hero: clamp(2.5rem, 1.6rem + 3.4vw, 4.5rem);      /* 72 */
+  --fs-h2: clamp(2.25rem, 1.5rem + 3vw, 4.5rem);         /* 72 */
+  --fs-h3: clamp(1.75rem, 1.2rem + 2vw, 3.125rem);       /* 50 */
+  --fs-card-title: clamp(1.375rem, 1rem + 1.2vw, 2.1875rem); /* 35 */
+  --fs-faq: clamp(1.0625rem, 0.8rem + 1vw, 1.875rem);    /* 30 */
+  --fs-label: clamp(1.0625rem, 0.9rem + 0.6vw, 1.5625rem); /* 25 */
+  --fs-nav: clamp(1rem, 0.85rem + 0.5vw, 1.5rem);        /* 24 */
+  --fs-body: clamp(1rem, 0.9rem + 0.45vw, 1.375rem);     /* 22 */
+
+  /* Radii */
+  --r-sm: 12px;
+  --r-md: 24px;
+  --r-lg: 40px;
+  --r-xl: 80px;
+  --r-pill: 999px;
+
+  /* Layout */
+  --container: 1120px;
+  --container-wide: 1243px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --section-gap: clamp(96px, 10vw, 200px);
+  --header-h: clamp(68px, 6vw, 100px);
+  --header-top: clamp(12px, 3vw, 60px);
+
+  /* Motion (from Figma prototype settings) */
+  --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+  --ease-out: cubic-bezier(0, 0, 0.58, 1);
+  --t-fast: 100ms;
+  --t-base: 300ms;
+  --t-slow: 500ms;
+  --t-card: 1200ms;
+
+  color-scheme: dark;
+}
+
+/* ---------- Reset / base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 140px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: var(--fs-body);
+  line-height: 1.21;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: var(--r-sm);
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* ---------- Layout helpers ---------- */
+.container {
+  width: min(100% - 2 * var(--gutter), var(--container));
+  margin-inline: auto;
+}
+
+.container--wide {
+  width: min(100% - 2 * var(--gutter), var(--container-wide));
+}
+
+.page {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+}
+
+.section {
+  position: relative;
+  margin-top: var(--section-gap);
+}
+
+.section-title {
+  font-size: var(--fs-h2);
+  font-weight: 800;
+  line-height: 1.21;
+  text-align: center;
+}
+
+.section-sub {
+  margin-top: 16px;
+  font-size: clamp(1rem, 0.85rem + 0.5vw, 1.5rem);
+  color: var(--text-50);
+  text-align: center;
+}
+
+/* ---------- Background glows (Figma: blurred gradient ellipses) ---------- */
+.glow {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(closest-side, var(--c1), var(--c2, transparent) 70%, transparent);
+  opacity: var(--o, 0.55);
+}
+
+.glow--olive {
+  --c1: rgba(183, 186, 49, 0.55);
+  --c2: rgba(185, 113, 61, 0.12);
+}
+
+.glow--violet {
+  --c1: rgba(109, 49, 186, 0.75);
+  --c2: rgba(109, 49, 186, 0.1);
+}
+
+.glow--maroon {
+  --c1: rgba(103, 24, 52, 0.9);
+  --c2: rgba(81, 45, 19, 0.35);
+}
+
+.glow--blue {
+  --c1: rgba(73, 113, 255, 0.7);
+  --c2: rgba(73, 113, 255, 0.08);
+}
+
+.glow--aurora {
+  --c1: rgba(193, 115, 255, 0.7);
+  --c2: rgba(112, 238, 255, 0.25);
+  --o: 0.45;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  transition:
+    transform var(--t-base) var(--ease-out),
+    box-shadow var(--t-base) var(--ease-out),
+    background-color var(--t-base) var(--ease-out);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--light {
+  min-width: 189px;
+  height: 53px;
+  padding: 0 28px;
+  background: rgba(217, 217, 217, 0.79);
+  color: #000;
+  font-size: 1.25rem;
+}
+
+.btn--light:hover {
+  background: rgba(240, 240, 240, 0.95);
+  box-shadow: 0 0 32px rgba(255, 255, 255, 0.25);
+}
+
+.btn--buy,
+.btn--bid {
+  flex: 1;
+  height: 49px;
+  font-size: 1.125rem;
+}
+
+.btn--buy {
+  background: var(--blue);
+  color: #fff;
+}
+
+.btn--buy:hover {
+  box-shadow: 0 0 24px rgba(53, 128, 239, 0.6);
+}
+
+.btn--bid {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.btn--bid:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #fff;
+}
+
+/* Store buttons (Play Store / App Store) */
+.store {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 200px;
+  height: 66px;
+  border-radius: var(--r-sm);
+  font-size: var(--fs-body);
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition:
+    transform var(--t-base) var(--ease-out),
+    box-shadow var(--t-base) var(--ease-out);
+}
+
+.store:hover {
+  transform: translateY(-3px);
+}
+
+.store img {
+  position: relative;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.store span {
+  position: relative;
+  z-index: 1;
+}
+
+.store--play {
+  background: rgba(126, 126, 126, 0.29);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.store--play:hover {
+  box-shadow: 0 0 32px rgba(255, 255, 255, 0.15);
+}
+
+.store--apple {
+  background: rgba(217, 217, 217, 0.9);
+  color: #000;
+}
+
+.store--apple img {
+  width: 31px;
+  height: 38px;
+}
+
+.store--apple:hover {
+  box-shadow: 0 0 32px rgba(255, 255, 255, 0.35);
+}
+
+/* ---------- Glass primitives ---------- */
+.glass {
+  background: var(--glass);
+  border: 2px solid var(--glass-line);
+}
+
+.glass-circle {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--glass-line);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 0 10px rgba(0, 0, 0, 0.25),
+    inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 37px;
+  padding: 0 18px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--glass-line);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 0 10px rgba(0, 0, 0, 0.25),
+    inset 0 0 10px rgba(0, 0, 0, 0.1);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pill-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 16px;
+  border-radius: 17px;
+  background: rgba(217, 217, 217, 0.21);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.pill-sm img {
+  width: 15px;
+  height: 15px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: var(--header-top);
+  z-index: 50;
+  width: min(100% - 2 * var(--gutter), 1480px);
+  margin: var(--header-top) auto 0;
+}
+
+.site-header__bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-h);
+  padding: 0 clamp(14px, 2vw, 30px) 0 clamp(20px, 3.1vw, 60px);
+  border-radius: 50px;
+  background: var(--header-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition:
+    background-color var(--t-base) var(--ease-out),
+    box-shadow var(--t-base) var(--ease-out);
+}
+
+.site-header.is-scrolled .site-header__bar {
+  background: rgba(20, 20, 20, 0.82);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+}
+
+.site-header__logo img {
+  width: 36px;
+  height: 50px;
+  object-fit: contain;
+  transition: transform var(--t-base) var(--ease-out);
+}
+
+.site-header__logo:hover img {
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.site-nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.site-nav ul {
+  display: flex;
+  gap: clamp(24px, 3vw, 60px);
+}
+
+.site-nav a {
+  position: relative;
+  font-size: var(--fs-nav);
+  white-space: nowrap;
+  color: var(--text-80);
+  transition: color var(--t-base) var(--ease-out);
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--t-base) var(--ease-out);
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: #fff;
+}
+
+.site-nav a:hover::after,
+.site-nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-toggle {
+  display: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-line);
+}
+
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin: 4px auto;
+  border-radius: 2px;
+  background: #fff;
+  transition:
+    transform var(--t-base) var(--ease-in-out),
+    opacity var(--t-base) var(--ease-in-out);
+}
+
+.site-header.is-open .nav-toggle span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.site-header.is-open .nav-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.site-header.is-open .nav-toggle span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  position: relative;
+  margin-top: var(--section-gap);
+  padding: 48px 0 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.site-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+.site-footer__brand img {
+  width: 26px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  font-size: 1rem;
+  color: var(--text-60);
+}
+
+.site-footer__links a:hover {
+  color: #fff;
+}
+
+.site-footer__copy {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  width: 100%;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.site-footer__credit a {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  background: linear-gradient(90deg, #f58529, #dd2a7b, #8134af);
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  padding-bottom: 2px;
+  transition: color var(--t-base) var(--ease-out), background-size var(--t-base) var(--ease-out);
+}
+
+.site-footer__credit a:hover {
+  color: #fff;
+  background-size: 100% 2px;
+}
+
+/* ---------- NFT card A — "Better #216" (Download section, Figma Component 5) ---------- */
+.nft-stack {
+  --slide-x: 81px;
+  position: relative;
+  flex: none;
+  width: 357px;
+  height: 525px;
+  margin-top: 85px; /* room for the hover slide (up) */
+  margin-right: var(--slide-x); /* room for the hover slide (right) */
+  cursor: pointer;
+  outline: none;
+}
+
+.nft-back,
+.nft-front {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-lg);
+  transition: transform var(--t-slow) var(--ease-in-out);
+}
+
+.nft-back {
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.nft-back__orbs {
+  position: absolute;
+  left: 69px;
+  top: 166px;
+  width: 219px;
+  height: 193px;
+  transition: transform var(--t-slow) var(--ease-in-out);
+}
+
+.nft-back__orbs i {
+  position: absolute;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 4px 10px rgba(0, 0, 0, 0.2),
+    0 0 50px var(--glow);
+}
+
+.nft-back__orbs i:nth-child(1) { left: 0; top: 0; background: rgba(240, 85, 85, 0.8); --glow: rgba(240, 85, 85, 0.6); }
+.nft-back__orbs i:nth-child(2) { left: 87px; top: 4px; background: rgba(255, 191, 28, 0.8); --glow: rgba(255, 191, 28, 0.6); }
+.nft-back__orbs i:nth-child(3) { left: 29px; top: 79px; background: rgba(55, 144, 250, 0.8); --glow: rgba(55, 144, 250, 0.6); }
+.nft-back__orbs i:nth-child(4) { left: 115px; top: 89px; background: rgba(22, 237, 82, 0.8); --glow: rgba(22, 237, 82, 0.6); }
+
+.nft-back__badge {
+  position: absolute;
+  left: 112px;
+  top: 196px;
+  width: 133px;
+  height: 133px;
+  transition: transform var(--t-slow) var(--ease-in-out);
+}
+
+.nft-back__badge img {
+  width: 45px;
+  height: 64px;
+  opacity: 0.8;
+}
+
+.nft-front {
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+}
+
+.nft-front__top {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 272px;
+  background: var(--purple-card);
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+}
+
+.nft-front__title {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 1.5625rem;
+  font-weight: 700;
+}
+
+.nft-front__avatar {
+  position: absolute;
+  top: 85px;
+  left: 96px;
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  background: #c3cff9;
+  object-fit: cover;
+}
+
+.nft-front__mark {
+  position: absolute;
+  top: 78px;
+  left: 215px;
+  width: 54px;
+  height: 54px;
+}
+
+.nft-front__mark img {
+  width: 18px;
+  height: 26px;
+  opacity: 0.8;
+}
+
+.nft-front__panel {
+  position: absolute;
+  inset: auto 0 0;
+  height: 298px;
+  padding: 43px 30px 40px 34px;
+  border-radius: var(--r-lg);
+  background: rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 10px 20px #000,
+    inset 4px 4px 20px rgba(0, 0, 0, 0.1),
+    inset -10px -10px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.nft-front__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nft-front__name {
+  font-size: 1.5625rem;
+  font-weight: 700;
+}
+
+.nft-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 34px;
+}
+
+.nft-stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.nft-stats div::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 64px;
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.nft-stats dt {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.nft-stats dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--text-80);
+}
+
+.nft-actions {
+  display: flex;
+  gap: 18px;
+  margin-top: auto;
+}
+
+/* Hover state — Figma "Component 4 / Variant2", smart-animate 500ms ease-in-out */
+.nft-stack:hover .nft-front,
+.nft-stack:focus-visible .nft-front,
+.nft-stack.is-active .nft-front {
+  transform: translate(var(--slide-x), -85px);
+}
+
+.nft-stack:hover .nft-back__orbs,
+.nft-stack:focus-visible .nft-back__orbs,
+.nft-stack.is-active .nft-back__orbs {
+  transform: translate(-69px, 166px);
+}
+
+.nft-stack:hover .nft-back__badge,
+.nft-stack:focus-visible .nft-back__badge,
+.nft-stack.is-active .nft-back__badge {
+  transform: translate(-97px, 170px);
+}
+
+/* ---------- NFT card B — "Shoe NFT" (Walk section, Figma Group 123) ---------- */
+.shoe-wrap {
+  position: relative;
+  flex: none;
+  width: 357px;
+  height: 525px;
+}
+
+.shoe-wrap__blob {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.shoe-wrap__blob--blue {
+  left: 245px;
+  top: 313px;
+  width: 158px;
+}
+
+.shoe-wrap__blob--green {
+  left: -16px;
+  top: 404px;
+  width: 110px;
+}
+
+.shoe-card {
+  --rarity: var(--red);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.34);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  color: #000;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+}
+
+.shoe-card__media {
+  position: relative;
+  height: 298px;
+  background: rgb(140, 82, 106);
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  overflow: hidden;
+}
+
+.shoe-card__media > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shoe-card__top {
+  position: absolute;
+  top: 32px;
+  left: 25px;
+  right: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.shoe-card__top .pill-sm {
+  color: #fff;
+}
+
+.shoe-card__top .pill-sm img[src*="chevron"] {
+  width: 16px;
+  height: 16px;
+}
+
+.shoe-card__chips {
+  position: absolute;
+  left: 58px;
+  bottom: 18px;
+  display: flex;
+  gap: 11px;
+}
+
+.shoe-card__rarity {
+  color: var(--rarity);
+  transition: color var(--t-card) var(--ease-out);
+}
+
+.shoe-card__ring {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid var(--rarity);
+  transition: border-color var(--t-card) var(--ease-out);
+}
+
+.shoe-card__price {
+  color: #fff;
+}
+
+.swap {
+  display: inline-block;
+  transition:
+    opacity calc(var(--t-card) / 2) var(--ease-out),
+    transform calc(var(--t-card) / 2) var(--ease-out);
+}
+
+.swap.is-out {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.shoe-card__body {
+  padding: 24px 25px 0 25px;
+}
+
+.shoe-card__owner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shoe-card__who {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 0.75rem;
+}
+
+.shoe-card__who strong {
+  display: block;
+  font-weight: 600;
+}
+
+.shoe-card__avatar {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #000;
+  border: 2px solid var(--glass-line);
+}
+
+.shoe-card__avatar img {
+  width: 21px;
+  height: 21px;
+}
+
+.shoe-card__follow {
+  height: 36px;
+  padding: 0 26px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.34);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+  color: #000;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: background-color var(--t-base) var(--ease-out);
+}
+
+.shoe-card__follow:hover,
+.shoe-card__follow[aria-pressed="true"] {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.shoe-card__desc {
+  margin-top: 25px;
+  padding: 0 9px;
+  font-size: 0.75rem;
+  line-height: 1.21;
+}
+
+.shoe-card__desc a {
+  color: var(--link-soft);
+  font-weight: 600;
+}
+
+.shoe-card .nft-actions {
+  margin-top: 16px;
+  padding: 0 9px;
+}
+
+.shoe-card .btn--bid {
+  background: rgba(0, 0, 0, 0.75);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Store CTA banner (Figma Left Overs "DownloadTwo") ---------- */
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: clamp(32px, 4.5vw, 90px) clamp(24px, 6vw, 122px) clamp(32px, 4.5vw, 90px) clamp(24px, 3.4vw, 65px);
+  border-radius: var(--r-lg);
+  background: rgba(24, 24, 24, 0.6);
+  border: 2px solid var(--glass-line);
+}
+
+.cta__title {
+  font-size: var(--fs-h3);
+  font-weight: 800;
+}
+
+.cta__text {
+  max-width: 639px;
+  margin-top: 30px;
+  color: var(--text-60);
+}
+
+.cta__stores {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.cta__stores .store {
+  width: 228px;
+  height: 75px;
+}
+
+.cta__stores .store--apple {
+  background: #fff;
+}
+
+.cta__stores .store--play {
+  background: rgba(217, 217, 217, 0.12);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- Info pages panel (Project Info frames) ---------- */
+/* Pull the info pages up under the sticky header so the background runs behind it */
+.page--info {
+  margin-top: calc(-1 * (var(--header-h) + var(--header-top)));
+}
+
+.info-hero {
+  position: relative;
+  padding: calc(var(--header-h) + var(--header-top) + clamp(40px, 4vw, 70px)) 0 clamp(48px, 6vw, 100px);
+}
+
+.info-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: url("../assets/images/steps-bg.jpg") center / cover no-repeat;
+  opacity: 0.9;
+}
+
+.info-hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 70%, #000);
+}
+
+.info-title {
+  font-size: var(--fs-h3);
+  font-weight: 800;
+  text-align: center;
+}
+
+.panel {
+  position: relative;
+  margin-top: 30px;
+  border-radius: clamp(32px, 4vw, var(--r-xl));
+  background: var(--panel-bg);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.panel__mark {
+  position: absolute;
+  top: -28px;
+  right: -28px;
+  width: 122px;
+  height: 122px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.panel__mark img {
+  width: 41px;
+  height: 59px;
+  opacity: 0.8;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1180px) {
+  .site-nav ul {
+    gap: 24px;
+  }
+
+  .site-nav a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 960px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .site-header__actions .btn--light {
+    display: none;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    transform: none;
+    padding: 12px;
+    border-radius: 28px;
+    background: rgba(20, 20, 20, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-line);
+    opacity: 0;
+    visibility: hidden;
+    translate: 0 -10px;
+    transition:
+      opacity var(--t-base) var(--ease-out),
+      translate var(--t-base) var(--ease-out),
+      visibility 0s linear var(--t-base);
+  }
+
+  .site-header.is-open .site-nav {
+    opacity: 1;
+    visibility: visible;
+    translate: 0 0;
+    transition:
+      opacity var(--t-base) var(--ease-out),
+      translate var(--t-base) var(--ease-out);
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .site-nav a {
+    display: block;
+    padding: 14px 18px;
+    border-radius: 16px;
+    font-size: 1.125rem;
+  }
+
+  .site-nav a::after {
+    display: none;
+  }
+
+  .site-nav a:hover,
+  .site-nav a[aria-current="page"] {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .site-nav .site-nav__cta {
+    display: block;
+    margin-top: 8px;
+    text-align: center;
+    background: rgba(217, 217, 217, 0.79);
+    color: #000;
+    font-weight: 700;
+  }
+
+  .cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cta__stores {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .panel__mark {
+    top: -20px;
+    right: -8px;
+    width: 84px;
+    height: 84px;
+  }
+
+  .panel__mark img {
+    width: 28px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 961px) {
+  .site-nav .site-nav__cta-item {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .store,
+  .cta__stores .store {
+    width: 100%;
+    max-width: 260px;
+    height: 60px;
+  }
+
+  .nft-stack {
+    --slide-x: 24px;
+    zoom: 0.84;
+  }
+
+  .shoe-wrap {
+    zoom: 0.88;
+  }
+}
